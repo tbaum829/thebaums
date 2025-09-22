@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "The Baums - Our Story",
   description: "A timeline of our relationship milestones and memories",
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "The Baums - Our Story",
     description: "A timeline of our relationship milestones and memories",
