@@ -1,5 +1,5 @@
-import { posts } from "../data/posts"
-import Timeline from "../components/Timeline"
+import { posts } from "@/data/posts"
+import Timeline from "@/components/Timeline"
 
 export default function Home() {
   // Sort posts by date descending (newest first)

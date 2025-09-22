@@ -5,13 +5,8 @@ import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 
-interface Photo {
-  src: string
-  alt?: string
-}
-
 interface CarouselProps {
-  photos: Photo[]
+  photos: string[]
   postId: string
 }
 
@@ -99,7 +94,7 @@ export default function Carousel({ photos, postId }: CarouselProps) {
   return (
     <div
       ref={carouselRef}
-      className="relative w-full max-w-md mx-auto"
+      className="relative w-full max-w-sm sm:max-w-md mx-auto"
       data-testid={`carousel-${postId}`}
       tabIndex={0}
       role="region"
@@ -116,8 +111,8 @@ export default function Carousel({ photos, postId }: CarouselProps) {
         onPointerUp={handlePointerUp}
       >
         <Image
-          src={photos[currentIndex].src || "/placeholder.svg"}
-          alt={photos[currentIndex].alt || `Photo ${currentIndex + 1}`}
+          src={photos[currentIndex] || "/placeholder.svg"}
+          alt={`Photo ${currentIndex + 1}`}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
@@ -130,19 +125,19 @@ export default function Carousel({ photos, postId }: CarouselProps) {
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-8 sm:h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0"
               aria-label="Previous photo"
               aria-controls={`carousel-${postId}`}
             >
-              ←
+              <span className="text-lg sm:text-base">←</span>
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-8 sm:h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0"
               aria-label="Next photo"
               aria-controls={`carousel-${postId}`}
             >
-              →
+              <span className="text-lg sm:text-base">→</span>
             </button>
           </>
         )}
@@ -162,7 +157,7 @@ export default function Carousel({ photos, postId }: CarouselProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+              className={`w-3 h-3 sm:w-2 sm:h-2 rounded-full transition-colors duration-200 min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 flex items-center justify-center ${
                 index === currentIndex ? "bg-white" : "bg-gray-600 hover:bg-gray-400"
               }`}
               aria-label={`Go to photo ${index + 1}`}

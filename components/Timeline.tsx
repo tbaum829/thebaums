@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import TimelineItem from "./TimelineItem"
-import type { Post } from "../data/posts"
+import type { Post } from "@/data/posts"
 
 interface TimelineProps {
   posts: Post[]
@@ -12,28 +12,6 @@ export default function Timeline({ posts }: TimelineProps) {
   const [visiblePosts, setVisiblePosts] = useState(5)
   const [activePostId, setActivePostId] = useState<string>("")
   const timelineRef = useRef<HTMLOListElement>(null)
-  const [isLoading, setIsLoading] = useState(false)
-
-  const loadMorePosts = useCallback(() => {
-    if (isLoading || visiblePosts >= posts.length) return
-
-    setIsLoading(true)
-    setTimeout(() => {
-      setVisiblePosts((prev) => Math.min(prev + 5, posts.length))
-      setIsLoading(false)
-    }, 500) // Small delay to show loading state
-  }, [isLoading, visiblePosts, posts.length])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
-        loadMorePosts()
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [loadMorePosts])
 
   // Update URL hash based on visible posts
   useEffect(() => {
@@ -81,36 +59,41 @@ export default function Timeline({ posts }: TimelineProps) {
     }
   }, [])
 
+  const loadMorePosts = () => {
+    setVisiblePosts((prev) => Math.min(prev + 5, posts.length))
+  }
+
   const hasMorePosts = visiblePosts < posts.length
 
   return (
-    <div className="relative max-w-6xl mx-auto px-4 py-8">
-      <ol ref={timelineRef} className="timeline-line relative space-y-24 md:space-y-32" data-testid="timeline">
+    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <ol ref={timelineRef} className="timeline-line relative space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24" data-testid="timeline">
         {posts.slice(0, visiblePosts).map((post, index) => (
           <TimelineItem key={post.id} post={post} index={index} isActive={activePostId === post.id} />
         ))}
       </ol>
 
       {hasMorePosts && (
-        <div className="flex justify-center mt-16">
-          {isLoading ? (
-            <div className="text-white/60 text-sm">Loading older posts...</div>
-          ) : (
-            <div className="text-white/40 text-xs">Scroll down for older posts</div>
-          )}
+        <div className="flex justify-center mt-12 sm:mt-16">
+          <button
+            onClick={loadMorePosts}
+            className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium text-sm sm:text-base min-h-[44px] min-w-[120px]"
+          >
+            Load older posts
+          </button>
         </div>
       )}
 
       {/* Back to top button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-200 opacity-0 hover:opacity-100 focus:opacity-100"
+        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-white text-black rounded-full hover:bg-gray-200 transition-all duration-200 opacity-0 hover:opacity-100 focus:opacity-100 shadow-lg"
         style={{
           opacity: typeof window !== "undefined" && window.scrollY > window.innerHeight ? 1 : 0,
         }}
         aria-label="Back to top"
       >
-        ↑
+        <span className="text-lg sm:text-xl">↑</span>
       </button>
     </div>
   )
