@@ -31,6 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.svg?v=1" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg?v=1" />
+      </head>
       <body className={`${inter.className} bg-black text-white antialiased`}>{children}</body>
     </html>
   )
