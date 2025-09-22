@@ -13,8 +13,8 @@ export const posts: Post[] = [
     title: "Yosemite",
     description: "Weekend car camping at Yosemite National Park.",
     photos: [
-      "/photos/yosemite_1.jpeg",
-      "/photos/yosemite_2.jpeg",
+      "/photos/IMG_3297.jpeg",
+      "/photos/IMG_3311.jpeg",
     ],
   },
   {
@@ -23,9 +23,11 @@ export const posts: Post[] = [
     title: "Honeymoon",
     description: "A week in Cabo.",
     photos: [
-      "/photos/honeymoon_1.jpeg",
-      "/photos/honeymoon_2.jpeg",
-      "/photos/honeymoon_3.jpeg",
+      "/photos/IMG_5209.jpeg",
+      "/photos/IMG_3070.jpeg",
+      "/photos/IMG_3050.jpeg",
+      "/photos/IMG_3044.jpeg",
+      "/photos/IMG_5211.jpeg",
     ],
   },
   {
@@ -34,8 +36,20 @@ export const posts: Post[] = [
     title: "Our Wedding Day",
     description: "Trinity Tree Farm - Issaquah, WA",
     photos: [
-      "/photos/wedding_1.jpeg",
-      "/photos/wedding_2.jpeg",
+      "/photos/IMG_3091.jpeg",
+      "/photos/IMG_3092.jpeg",
+      "/photos/IMG_0158.jpeg",
+    ],
+  },
+  {
+    id: "2025-05-31-wedding-day",
+    date: "2025-05-31",
+    title: "Engagement Photos",
+    description: "Pacifica, CA",
+    photos: [
+      "/photos/untitled-4989.jpeg",
+      "/photos/untitled-4902.jpeg",
+      "/photos/untitled-1229.jpeg"
     ],
   },
   {
@@ -44,39 +58,8 @@ export const posts: Post[] = [
     title: "She Said Yes",
     description: "The easiest question I've ever asked.",
     photos: [
-      "/photos/007.jpg",
-      "/photos/008.jpg",
+      "/photos/IMG_1820.jpeg",
+      "/photos/IMG_1815.jpeg",
     ],
-  },
-  {
-    id: "2023-10-01-move-in",
-    date: "2023-10-01",
-    title: "Our First Place",
-    description: "Boxes everywhere. Pizza on the floor. Perfect.",
-    photos: ["/photos/009.jpg"],
-  },
-  {
-    id: "2022-05-20-first-trip",
-    date: "2022-05-20",
-    title: "First Trip Together",
-    description: "Missed a train, found the best coffee.",
-    photos: ["/photos/010.jpg"],
-  },
-  {
-    id: "2021-11-15-first-date",
-    date: "2021-11-15",
-    title: "Where It All Began",
-    description: "Nervous laughter and the longest dinner of our lives.\nWe closed down the restaurant.",
-    photos: [
-      "/photos/011.jpg",
-      "/photos/012.jpg",
-    ],
-  },
-  {
-    id: "2021-09-03-first-meeting",
-    date: "2021-09-03",
-    title: "The Day We Met",
-    description: "A chance encounter that changed everything.",
-    photos: ["/photos/013.jpg"],
   },
 ]

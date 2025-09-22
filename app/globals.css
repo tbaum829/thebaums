@@ -142,18 +142,17 @@
   .timeline-node {
     position: absolute;
     left: 50%;
-    top: 1.5rem;
+    top: 50%;
     width: 10px;
     height: 10px;
     background-color: white;
     border-radius: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
 
   @media (min-width: 640px) {
     .timeline-node {
-      top: 2rem;
       width: 12px;
       height: 12px;
     }
