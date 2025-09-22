@@ -40,7 +40,7 @@ export default function TimelineItem({ post, index, isActive }: TimelineItemProp
       id={post.id}
       data-post-id={post.id}
       data-testid={`timeline-item-${index}`}
-      className={`relative transition-all duration-700 ${
+      className={`timeline-item relative transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
@@ -48,10 +48,10 @@ export default function TimelineItem({ post, index, isActive }: TimelineItemProp
       <div className="timeline-node" />
 
       {/* Content container */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
+      <div className="timeline-content grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
         {/* Mobile: Always show content first, then carousel */}
         <div className="lg:hidden space-y-4 sm:space-y-6">
-          <div className="text-center px-2">
+          <div className="timeline-text text-center px-2">
             <time className="text-gray-400 text-xs sm:text-sm font-medium">{formatDate(post.date)}</time>
             <h2 className="text-xl sm:text-2xl font-bold mt-2 mb-3 sm:mb-4 leading-tight">{post.title}</h2>
             <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm sm:text-base">{post.description}</p>
@@ -66,7 +66,7 @@ export default function TimelineItem({ post, index, isActive }: TimelineItemProp
         {/* Desktop: Alternate layout */}
         <div className="hidden lg:block">
           {isEven ? (
-            <div className="text-right pr-8">
+            <div className="timeline-text text-right pr-8">
               <time className="text-gray-400 text-sm font-medium">{formatDate(post.date)}</time>
               <h2 className="text-3xl font-bold mt-2 mb-4">{post.title}</h2>
               <p className="text-gray-300 leading-relaxed whitespace-pre-line">{post.description}</p>
@@ -84,7 +84,7 @@ export default function TimelineItem({ post, index, isActive }: TimelineItemProp
               <Carousel photos={post.photos} postId={post.id} />
             </div>
           ) : (
-            <div className="text-left pr-8">
+            <div className="timeline-text text-left pr-8">
               <time className="text-gray-400 text-sm font-medium">{formatDate(post.date)}</time>
               <h2 className="text-3xl font-bold mt-2 mb-4">{post.title}</h2>
               <p className="text-gray-300 leading-relaxed whitespace-pre-line">{post.description}</p>

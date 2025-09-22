@@ -152,12 +152,12 @@ export default function Carousel({ photos, postId }: CarouselProps) {
 
       {/* Dots indicator */}
       {photos.length > 1 && (
-        <div className="flex justify-center mt-4 space-x-2">
+        <div className="carousel-dots flex justify-center mt-4 space-x-2">
           {photos.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 sm:w-2 sm:h-2 rounded-full transition-colors duration-200 min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 flex items-center justify-center ${
+              className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full transition-colors duration-200 ${
                 index === currentIndex ? "bg-white" : "bg-gray-600 hover:bg-gray-400"
               }`}
               aria-label={`Go to photo ${index + 1}`}
